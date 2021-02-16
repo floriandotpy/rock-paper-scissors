@@ -7,6 +7,7 @@ const target_shape = [1, 200, 200, 3];
 window.model = null;
 
 function classify(img_element, should_alert) {
+
     let image = tf.browser
         .fromPixels(img_element)
         .reshape(target_shape);
@@ -51,8 +52,8 @@ async function main() {
 
     let elements = document.getElementsByClassName("predict");
 
-    let clickHandler = function() {
-        classify(this, true);
+    let clickHandler = function(event) {
+        classify(event.currentTarget, true);
     };
 
     for (var i = 0; i < elements.length; i++) {
